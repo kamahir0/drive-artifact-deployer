@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー - Drive Artifact Deployer</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --accent: #f1f5f9;
+      --code-bg: #f1f5f9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --border: #334155;
+        --accent: #1e293b;
+        --code-bg: #0f172a;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.75rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.875em;
+      background-color: var(--code-bg);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .policy-box {
+      background-color: var(--accent);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.9375rem;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    a:hover {
+      color: var(--primary-hover);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .en-section {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 2px dashed var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>プライバシーポリシー (Privacy Policy)</h1>
+      <p class="subtitle">アプリケーション名: Drive Artifact Deployer | 最終更新日: 2026年10月13日</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>1. 本方針について</h2>
+        <p>
+          「Drive Artifact Deployer」（以下「本アプリ」）は、個人の小説制作・執筆ワークフローにおいて、CI/CD（GitHub Actions）でビルドされた電子書籍（EPUB）成果物を開発者本人の Google Drive へ自動転送・配備するために作成された個人用ツールです。
+        </p>
+        <p>
+          本アプリは一般公開されているマルチユーザー向けサービスではなく、開発者本人（または明示的に許可されたテストアカウント）のみが使用します。本プライバシーポリシーでは、本アプリが利用する Google API、アクセス権限、データの取り扱い、およびセキュリティについて説明します。
+        </p>
+      </section>
+
+      <section>
+        <h2>2. 使用する OAuth スコープ</h2>
+        <p>本アプリは、以下の Google API スコープのみを要求・使用します。</p>
+        <ul>
+          <li>
+            <code>https://www.googleapis.com/auth/drive.file</code>
+            <br>
+            <strong>権限内容:</strong> 本アプリ自身が Google Drive 上に新規作成したファイル、または本アプリを使用して開いたファイル・フォルダの閲覧・作成・編集・削除に限定された権限（Non-sensitive スコープ）。
+          </li>
+        </ul>
+        <p>
+          本アプリは Google Drive 全体へのアクセス権限（<code>drive</code> や <code>drive.readonly</code> 等）を要求しません。Google Drive 内にあるユーザーの他の既存ファイル（写真、ドキュメント、私的フォルダなど）を閲覧、検索、変更、削除することは技術的・権限的に不可能です。
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Google Drive 上で行う具体的なファイル操作</h2>
+        <p>本アプリの実装（同期スクリプト）は、本アプリが管理対象として明示的に作成したファイル・フォルダのみを対象として、以下の操作を行います。</p>
+        <ul>
+          <li>
+            <strong>フォルダおよびファイルの作成 (Create):</strong>
+            Google Drive 上に配備用ルートフォルダ（<code>Deployments</code>）を作成し、その配下にリポジトリ別・Git ブランチ別のフォルダ階層を作成して、生成された EPUB ファイルをアップロードします。作成されたアイテムには本アプリ専用のメタデータ（<code>appProperties</code>）が付与されます。
+          </li>
+          <li>
+            <strong>ファイル内容およびメタデータの更新 (Update):</strong>
+            Git コミットの更新に伴い、既存の EPUB ファイルの内容およびビルド識別子（Git コミットハッシュ等）を最新状態に上書き更新します。
+          </li>
+          <li>
+            <strong>ファイルの削除 (Delete):</strong>
+            以下の正当な同期理由に限定して、本アプリ自身が作成したファイル・フォルダを削除します。
+            <ul>
+              <li>Git リポジトリ側で原稿が削除されたことに伴い、対応する配備済み EPUB ファイルを削除する場合（同期の整合性維持）。</li>
+              <li>ファイルの削除によって空になった配備用サブフォルダをクリーンアップする場合。</li>
+              <li>プルリクエストのクローズやブランチの削除に伴い、該当ブランチの一時プレビュー用フォルダ全体を削除する場合（ストレージ整理）。</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          <strong>他ファイルへの非干渉:</strong>
+          本アプリが付与した特定の管理識別子（<code>appProperties</code>）を持たないファイルやフォルダは、一切検索・更新・削除の対象としません。
+        </p>
+      </section>
+
+      <section>
+        <h2>4. データの保存先および第三者提供の有無</h2>
+        <ul>
+          <li><strong>データの保存先:</strong> アップロードされた EPUB ファイルは、ユーザー本人の Google Drive アカウント内のみに保存されます。また、一時的なビルドアーティファクトは本人の GitHub リポジトリの GitHub Actions ランナー上でのみ扱われます。</li>
+          <li><strong>第三者提供の有無:</strong> 本アプリは、いかなるユーザーデータ、ファイル内容、認証情報も外部のサーバー、第三者企業、または広告トラッカー等に送信・共有・開示・販売しません。本アプリにはアナリティクスやトラッキングコードも一切含まれていません。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. 認証情報の管理とセキュリティ</h2>
+        <ul>
+          <li><strong>トークン管理:</strong> OAuth 2.0 のクライアント ID、クライアントシークレット、およびリフレッシュトークンは、GitHub リポジトリの暗号化された秘密情報（GitHub Actions Secrets）および開発者のローカル作業端末内（Git 管理外の保護ファイル）にのみ保管されます。</li>
+          <li><strong>ログ保護:</strong> CI/CD 実行ログ、プルリクエスト、コミットログ等に認証情報が出力されないよう、マスキングおよび適切な除外処理が行われています。</li>
+          <li><strong>データ通信:</strong> Google API とのすべての通信は、HTTPS (TLS) による暗号化通信を用いて行われます。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. アクセス権限の取り消し方法</h2>
+        <p>ユーザーはいつでも本アプリに対する Google アカウントへのアクセス許可を取り消すことができます。</p>
+        <ol>
+          <li><a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google アカウントの「サードパーティ製のアプリとサービス」設定</a> にアクセスします。</li>
+          <li>一覧から <strong>Drive Artifact Deployer</strong> を選択します。</li>
+          <li>「アクセス権を削除」または「接続を解除」をクリックします。</li>
+        </ol>
+        <p>権限を取り消すと、本アプリからの Google Drive への新規アクセスおよび同期は直ちに停止されます。</p>
+      </section>
+
+      <section>
+        <h2>7. お問い合わせ</h2>
+        <p>本アプリおよびプライバシーポリシーに関するご質問、ご意見、または問題の報告は、以下の GitHub リポジトリの Issue にて受け付けています。</p>
+        <p>
+          <a href="https://github.com/kamahir0/drive-artifact-deployer/issues" target="_blank" rel="noopener">https://github.com/kamahir0/drive-artifact-deployer/issues</a>
+        </p>
+      </section>
+
+      <div class="policy-box">
+        <strong>Google API 限定使用規程の遵守 (Google API Limited Use Disclosure):</strong><br>
+        本アプリによる Google API から受け取った情報の使用および他のアプリへの転送は、<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API サービスのユーザーデータに関するポリシー</a>（限定使用要件を含む）に準拠します。
+      </div>
+
+      <!-- English Section -->
+      <section class="en-section">
+        <h2>Privacy Policy (English Version)</h2>
+        <p><strong>Application Name:</strong> Drive Artifact Deployer<br><strong>Last Updated:</strong> October 13, 2026</p>
+
+        <h3>1. Purpose & Scope</h3>
+        <p>
+          Drive Artifact Deployer is a private personal utility used solely by the developer to synchronize built EPUB book artifacts from GitHub Actions CI workflows to their personal Google Drive storage. This is not a multi-user or commercial public service.
+        </p>
+
+        <h3>2. Google API Scopes</h3>
+        <p>This tool requests only one scope:</p>
+        <ul>
+          <li><code>https://www.googleapis.com/auth/drive.file</code> — Permits viewing, creating, updating, and deleting only the specific files and folders created or opened by this application. It cannot view, access, or modify any other files in your Google Drive.</li>
+        </ul>
+
+        <h3>3. File Operations Performed on Google Drive</h3>
+        <ul>
+          <li><strong>Create:</strong> Generates a dedicated deployment folder hierarchy (<code>Deployments/</code>) and uploads novel EPUB artifacts with specific metadata (<code>appProperties</code>).</li>
+          <li><strong>Update:</strong> Updates existing EPUB files and build SHA tags when changes are pushed to Git.</li>
+          <li><strong>Delete:</strong> Only deletes application-created artifacts when a novel source is removed from the Git repository, cleans up empty subfolders, or removes temporary branch preview folders when a pull request or branch is closed. It never deletes or touches files created outside this app.</li>
+        </ul>
+
+        <h3>4. Data Storage & Third-Party Sharing</h3>
+        <p>
+          All synchronized files remain solely within the user's personal Google Drive account and ephemeral GitHub Actions runners. No personal data, novel content, or authentication tokens are ever shared, transmitted, or sold to third parties. There are no tracking scripts or external telemetry.
+        </p>
+
+        <h3>5. Security & Credential Handling</h3>
+        <p>
+          OAuth client secrets and refresh tokens are strictly stored in encrypted GitHub Actions Secrets and local git-ignored files. Credentials are never printed in CI logs or committed to version control.
+        </p>
+
+        <h3>6. Revoking Access</h3>
+        <p>
+          You can revoke access to this application at any time via <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account Permissions</a> by finding "Drive Artifact Deployer" and clicking "Remove Access".
+        </p>
+
+        <h3>7. Contact</h3>
+        <p>
+          For inquiries or issues regarding this application, please open an issue on the GitHub repository: <a href="https://github.com/kamahir0/drive-artifact-deployer/issues" target="_blank" rel="noopener">https://github.com/kamahir0/drive-artifact-deployer/issues</a>.
+        </p>
+
+        <div class="policy-box">
+          <strong>Google API Services User Data Policy Compliance:</strong><br>
+          Drive Artifact Deployer's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.
+        </div>
+      </section>
+
+      <div class="nav-links">
+        <a href="index.html">← ホームページへ戻る (Home)</a>
+        <a href="https://github.com/kamahir0/drive-artifact-deployer" target="_blank" rel="noopener">GitHub Repository ↗</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Drive Artifact Deployer. Developed for personal novel workflow automation.</p>
+    </footer>
+  </div>
+</body>
+</html>

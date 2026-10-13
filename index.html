@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive Artifact Deployer</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --accent: #f1f5f9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --border: #334155;
+        --accent: #1e293b;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.8125rem;
+      padding: 0.25rem 0.625rem;
+      background: var(--accent);
+      color: var(--text-muted);
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.75rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .notice {
+      background-color: var(--accent);
+      border-left: 4px solid var(--text-muted);
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-size: 0.9375rem;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    a:hover {
+      color: var(--primary-hover);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .en-section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px dashed var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Drive Artifact Deployer</h1>
+      <span class="badge">Personal Automation Tool / 個人用同期ツール</span>
+    </header>
+
+    <main>
+      <section>
+        <h2>概要 (Overview)</h2>
+        <p>
+          <strong>Drive Artifact Deployer</strong> は、個人の小説執筆ワークフローにおいて、GitHub Actions の CI/CD パイプラインで生成された EPUB 電子書籍ファイルを開発者本人の Google Drive に自動同期・バックアップするための個人専用ツールです。
+        </p>
+      </section>
+
+      <section>
+        <h2>利用対象と目的 (Audience & Purpose)</h2>
+        <ul>
+          <li><strong>個人専用ツール：</strong> 本ツールは開発者個人の執筆ワークフロー専用に設計・運用されており、一般ユーザー向けの公開サービスではありません。</li>
+          <li><strong>外部ユーザー登録なし：</strong> 外部ユーザー向けのサインアップ、アカウント登録、ログイン機能、一般公開機能は一切提供していません。</li>
+          <li><strong>単一用途：</strong> GitHub Actions 上でビルド・検証された EPUB アーティファクトを、本人の Google Drive の指定フォルダに安全に転送・配備することのみを目的としています。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>動作の仕組み (How it Works)</h2>
+        <p>
+          Git リポジトリへのプッシュやプルリクエスト作成時に GitHub Actions が起動し、小説原稿から EPUB ファイルを自動生成します。生成された EPUB は、OAuth 2.0 認証を介して Google Drive の所定フォルダ（<code>Deployments/</code>）へ同期されます。
+        </p>
+        <p>
+          本ツールがアクセスするのは、本ツール自身が Google Drive 上に作成したファイルおよびフォルダのみです（OAuth スコープ: <code>https://www.googleapis.com/auth/drive.file</code>）。ユーザーの他の個人ファイルへのアクセス権限は要求せず、一切アクセスしません。
+        </p>
+      </section>
+
+      <div class="notice">
+        <strong>セキュリティとプライバシー：</strong> 本ツールの詳細なデータ取り扱い基準、Google Drive 上でのファイル操作規程、および利用権限の取り消し方法については、<a href="privacy.html">プライバシーポリシー</a>をご確認ください。
+      </div>
+
+      <section class="en-section">
+        <h2>English Summary</h2>
+        <p>
+          <strong>Drive Artifact Deployer</strong> is a private, personal utility used solely by the developer to synchronize built EPUB novel artifacts from GitHub Actions CI workflows to their personal Google Drive storage.
+        </p>
+        <ul>
+          <li><strong>Personal Use Only:</strong> This application is not a public SaaS or multi-user service. There is no user registration or external login.</li>
+          <li><strong>Restricted Operation:</strong> The tool only manages files created by itself under the <code>https://www.googleapis.com/auth/drive.file</code> scope. It never touches or inspects any other personal files.</li>
+          <li><strong>Privacy Policy:</strong> For detailed disclosures regarding data access, retention, and revocation, please visit the <a href="privacy.html">Privacy Policy page</a>.</li>
+        </ul>
+      </section>
+
+      <div class="nav-links">
+        <a href="privacy.html">プライバシーポリシー (Privacy Policy) →</a>
+        <a href="https://github.com/kamahir0/drive-artifact-deployer" target="_blank" rel="noopener">GitHub Repository ↗</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Drive Artifact Deployer. Developed for personal novel workflow automation.</p>
+    </footer>
+  </div>
+</body>
+</html>
